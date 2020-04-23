@@ -33,5 +33,17 @@ export const useTasks = selectedProject => {
                 );
                 setArchivedTasks(newTasks.filter(task => task.archived === true));
             })
+        // noinspection JSValidateTypes
+        return () => unsubscribe();
     }, [selectedProject]);
+    return {tasks, archivedTasks};
+};
+
+export const useProjects = () => {
+    const [projects, setProjects] = useState([]);
+
+    useEffect(() => {
+        firebase.firestore().collection('projects').where('userId', '==', 'dsdsda')
+
+    }, []);
 }
