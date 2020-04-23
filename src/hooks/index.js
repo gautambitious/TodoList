@@ -6,7 +6,7 @@ import moment from "moment";
 
 export const useTasks = selectedProject => {
     const [tasks, setTasks] = useState([]);
-
+    const [archivedTasks, setArchivedTasks] = useState([]);
     useEffect(() => {
         let unsubscribe = firebase
             .firestore()
@@ -30,7 +30,8 @@ export const useTasks = selectedProject => {
                         task => moment(task.date, 'DD-MM-YYYY').diff(moment(), 'days') <= 7 && task.archived !== true
                         )
                         : newTasks.filter(task => task.archived !==true)
-                )
+                );
+                setArchivedTasks(newTasks.filter(task => task.archived === true));
             })
     }, [selectedProject]);
 }
