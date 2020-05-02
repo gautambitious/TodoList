@@ -24,4 +24,52 @@ ul {
 }
 
 //Variables
-$generic-box-shadow: rgba(0,0,0,1) 0px,0px,0px,1px rgba(0,0,0,1)
+$generic-box-shadow: rgba(0,0,0,1) 0px,0px,0px,1px rgba(0,0,0,1);
+$generic-border : 1px solid #f1f1f1;
+$generic-bg: #db4c4f;
+
+@mixin box-overlay(){
+    box-shadow: $generic-box-shadow;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    top: 85px;
+    border-radius: 3px;
+}
+
+@mixin va($va-align: center){
+    display: flex;
+    align-items: center;
+    @if $va-align != center {
+        justify-content: left;
+    } @else {
+        justify-content: center;
+    }
+}
+
+@mixin no-select{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@mixin btn($width){
+    width: $width;
+    background-color: $generic-bg;
+    color: #fff !important;
+    border: 1px solid transparent;
+    margin-right: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 12px !important;
+    line-height: 17px;
+    padding: 6px 12px 7px 12px;
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+    border-radius: 3px !important;
+
+}
